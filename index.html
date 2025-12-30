@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sum & Trigonometric Helper</title>
+</head>
+
+<body>
+
+    <h2>Sum of Numbers</h2>
+    <button onclick="showSum()">Calculate Sum</button>
+    <p id="sumResult"></p>
+
+    <h2>Trigonometric Values</h2>
+    <button onclick="showTrig()">Show Trigonometric Values</button>
+    <p id="trigResult"></p>
+
+    <script>
+        // Function to sum any number of arguments
+        function sumNumbers(...numbers) {
+            let sum = 0;
+            for (let num of numbers) {
+                sum += num;
+            }
+            return sum;
+        }
+
+        // Convert degrees to radians
+        function degreesToRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+
+        // Default trigonometric functions
+        function printTrigonometricValues(angleInDegrees) {
+            const radians = degreesToRadians(angleInDegrees);
+
+            return `
+                sin(${angleInDegrees}°) = ${Math.sin(radians).toFixed(4)} <br>
+                cos(${angleInDegrees}°) = ${Math.cos(radians).toFixed(4)} <br>
+                tan(${angleInDegrees}°) = ${Math.tan(radians).toFixed(4)}
+            `;
+        }
+
+        // Button actions
+        function showSum() {
+            const result = sumNumbers(10, 20, 30, 40);
+            document.getElementById("sumResult").innerText =
+                "Sum of numbers: " + result;
+        }
+
+        function showTrig() {
+            const angle = 45;
+            document.getElementById("trigResult").innerHTML =
+                printTrigonometricValues(angle);
+        }
+    </script>
+
+</body>
+
+</html>
